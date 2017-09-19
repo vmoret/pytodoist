@@ -11,7 +11,7 @@ setup(
     name='pytodoist',
     version=VERSION_NS['__version__'],
     packages=[
-        'todoist'
+        'todoist', 'todoist.models'
     ],
     package_dir={'': 'src'},
     package_data={},

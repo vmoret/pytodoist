@@ -12,11 +12,14 @@ pip install git+https://github.com/vmoret/pytodoist.git
 ## Usage
 
 ```python
-from todoist import Todoist
+from todoist import Todoist, NewTask
 
 todos = Todoist('<Your API token>')
 
+# print tasks
 print(todos)
 
-todos.append('do nothing', 'Work', 'tomorrow')
+# add new task
+todos.append(NewTask('do nothing', 'Work', labels=['home']))
 ```
+

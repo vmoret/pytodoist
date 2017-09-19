@@ -3,7 +3,7 @@ from functools import partial, wraps
 import uuid
 import requests
 
-from .immutable import Map
+from .immutable import Map, JSONEncoder
 
 __all__ = ('get', 'post', 'put', 'delete')
 
@@ -32,13 +32,15 @@ def get(url, token=None, params=None, **kwargs):
 
 @tojson
 def post(url, data, token=None, params=None, headers=None, **kwargs):
-    return requests.post(_build_url(url), params=Params(token, params),
+    return requests.post(_build_url(url), JSONEncoder().encode(data),
+                         params=Params(token, params),
                          headers=Headers(headers), **kwargs)
 
 
 @tojson
 def put(url, data, token=None, params=None, headers=None, **kwargs):
-    return requests.put(_build_url(url), params=Params(token, params),
+    return requests.put(_build_url(url), JSONEncoder().encode(data),
+                        params=Params(token, params),
                         headers=Headers(headers), **kwargs)
 
 
